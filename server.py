@@ -15,6 +15,12 @@ def sms_reply():
         time.sleep(1)
         print(request.form[key])
         print("")
+    for key in request.values.keys():
+        print(key)
+        time.sleep(1)
+        print(request.values[key])
+        print("")
+     
 
     # Start our TwiML response
     resp = MessagingResponse()
