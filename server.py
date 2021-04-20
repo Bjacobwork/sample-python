@@ -1,19 +1,18 @@
-import os
-import http.server
-import socketserver
+from flask import Flask, request, redirect
+from twilio.twiml.messaging_response import MessagingResponse
 
-from http import HTTPStatus
+app = Flask(__name__)
 
+@app.route("/sms", methods=['GET', 'POST'])
+def sms_reply():
+    """Respond to incoming calls with a simple text message."""
+    # Start our TwiML response
+    resp = MessagingResponse()
 
-class Handler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(HTTPStatus.OK)
-        self.end_headers()
-        msg = 'Hello! you requested a path that is just the root?'
-        self.wfile.write(msg.encode())
+    # Add a message
+    resp.message("Did it work?")
 
+    return str(resp)
 
-port = int(os.getenv('PORT', 80))
-print('Listening on port %s' % (port))
-httpd = socketserver.TCPServer(('', port), Handler)
-httpd.serve_forever()
+if __name__ == "__main__":
+    app.run(debug=True)
