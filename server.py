@@ -12,7 +12,7 @@ def sms_reply():
     for key in request.form.keys():
         print(key)
         print(request.form[key])
-        print()
+        print("")
 
     # Start our TwiML response
     resp = MessagingResponse()
