@@ -9,15 +9,10 @@ def sms_reply():
     """Respond to incoming calls with a simple text message."""
 
     # Use this data in your application logic
-    print(request.form['MessageSid'])
-    print(request.form['SmsSid'])
-    print(request.form['AccountSid'])
-    print(request.form['MessagingServiceSid'])
-    print(request.form['From'])
-    print(request.form['To'])
-    print(request.form['Body'])
-    print(request.form['NumMedia'])
-    
+    for key in request.form.keys():
+        print(key)
+        print(request.form[key])
+        print()
 
     # Start our TwiML response
     resp = MessagingResponse()
