@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 import os
+import time
 
 app = Flask(__name__)
 
@@ -11,6 +12,7 @@ def sms_reply():
     # Use this data in your application logic
     for key in request.form.keys():
         print(key)
+        time.sleep(1)
         print(request.form[key])
         print("")
 
