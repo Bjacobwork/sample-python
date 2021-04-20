@@ -14,4 +14,4 @@ def sms_reply():
 
     return str(resp)
 
-app.run(debug=True, port=8080)
+app.run(debug=True, port=80, host="104.236.229.86")
